@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TechNova Solutions</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: Arial, sans-serif; line-height: 1.6; transition: background 0.3s, color 0.3s; }
+    
+    /* Header */
+    header {
+      background: #0d47a1;
+      color: white;
+      padding: 15px 50px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    header h1 { font-size: 1.5rem; }
+    nav {
+      display: flex;
+      gap: 15px;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    nav a:hover { text-decoration: underline; }
+    
+    /* Mobile menu button */
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+    .menu-toggle div {
+      width: 25px;
+      height: 3px;
+      background: white;
+      margin: 4px 0;
+    }
+
+    /* Hero */
+    .hero {
+      height: 90vh;
+      background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+                  url("https://picsum.photos/1200/700") no-repeat center/cover;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+    .hero h2 { font-size: 3rem; margin-bottom: 15px; }
+    .hero p { font-size: 1.2rem; margin-bottom: 20px; }
+    .hero button {
+      padding: 12px 25px;
+      border: none;
+      border-radius: 8px;
+      background: #ff9800;
+      color: white;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+    .hero button:hover { background: #e68900; }
+
+    section {
+      padding: 60px 20px;
+      max-width: 1100px;
+      margin: auto;
+    }
+    h2 { text-align: center; margin-bottom: 40px; color: #0d47a1; }
+
+    /* Services */
+    .services {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+    .card {
+      background: #f9f9f9;
+      padding: 20px;
+      border-radius: 12px;
+      text-align: center;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      transition: transform 0.3s;
+    }
+    .card:hover { transform: translateY(-8px); }
+
+    /* Team */
+    .team {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+    .member {
+      background: white;
+      border-radius: 12px;
+      padding: 20px;
+      width: 250px;
+      text-align: center;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    .member img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      margin-bottom: 15px;
+    }
+
+    /* Contact Form */
+    .contact-form {
+      background: #f4f4f4;
+      padding: 30px;
+      border-radius: 12px;
+      max-width: 600px;
+      margin: auto;
+    }
+    .contact-form label { display: block; margin: 10px 0 5px; }
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%; padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      margin-bottom: 15px;
+    }
+    .contact-form button {
+      background: #0d47a1;
+      color: white;
+      padding: 12px 25px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    .contact-form button:hover { background: #08306b; }
+
+    footer {
+      background: #0d47a1;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+    }
+
+    /* Dark mode styles */
+    body.dark-mode {
+      background: #121212;
+      color: #f1f1f1;
+    }
+    body.dark-mode .card,
+    body.dark-mode .member,
+    body.dark-mode .contact-form {
+      background: #1e1e1e;
+      color: #f1f1f1;
+    }
+    body.dark-mode header { background: #0b3d91; }
+    body.dark-mode footer { background: #0b3d91; }
+
+    /* Responsive */
+    @media (max-width:768px){
+      nav { display: none; flex-direction: column; background: #0d47a1; position: absolute; top:60px; right:0; width: 200px; }
+      nav a { margin: 15px 0; text-align: center; }
+      .menu-toggle { display: flex; }
+      nav.active { display: flex; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <h1>TechNova Solutions</h1>
+    <div class="menu-toggle" id="menu-toggle">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+    <nav id="nav">
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#team">Team</a>
+      <a href="#contact">Contact</a>
+      <a href="#" id="dark-mode-toggle">🌙</a>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <div class="hero">
+    <h2>Innovating Your Future 🚀</h2>
+    <p>We build modern, scalable, and creative digital solutions for businesses worldwide.</p>
+    <button>Get Started</button>
+  </div>
+
+  <!-- About -->
+  <section id="about">
+    <h2>About Us</h2>
+    <p style="text-align:center; max-width:800px; margin:auto;">
+      TechNova Solutions is a leading software development company delivering cutting-edge web, mobile, and cloud solutions.
+    </p>
+  </section>
+
+  <!-- Services -->
+  <section id="services">
+    <h2>Our Services</h2>
+    <div class="services">
+      <div class="card">
+        <h3>🌐 Web Development</h3>
+        <p>Modern, responsive, and user-friendly websites tailored to your needs.</p>
+      </div>
+      <div class="card">
+        <h3>📱 Mobile Apps</h3>
+        <p>Custom iOS & Android apps built with performance and scalability in mind.</p>
+      </div>
+      <div class="card">
+        <h3>☁️ Cloud Solutions</h3>
+        <p>Secure, scalable cloud infrastructure to power your digital business.</p>
+      </div>
+      <div class="card">
+        <h3>🤖 AI Integration</h3>
+        <p>Smart AI-driven solutions to automate workflows and improve efficiency.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Team -->
+  <section id="team">
+    <h2>Meet Our Team</h2>
+    <div class="team">
+      <div class="member">
+        <img src="https://picsum.photos/100" alt="CEO">
+        <h3>Alex Johnson</h3>
+        <p>CEO & Founder</p>
+      </div>
+      <div class="member">
+        <img src="https://picsum.photos/101" alt="CTO">
+        <h3>Sophia Lee</h3>
+        <p>Chief Technology Officer</p>
+      </div>
+      <div class="member">
+        <img src="https://picsum.photos/102" alt="Designer">
+        <h3>David Smith</h3>
+        <p>Lead Designer</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact">
+    <h2>Contact Us</h2>
+    <div class="contact-form">
+      <form>
+        <label for="name">Your Name</label>
+        <input type="text" id="name" required>
+        <label for="email">Your Email</label>
+        <input type="email" id="email" required>
+        <label for="message">Message</label>
+        <textarea id="message" rows="4" required></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 TechNova Solutions | All Rights Reserved</p>
+  </footer>
+
+  <!-- JavaScript -->
+  <script>
+    // Mobile menu toggle
+    const menuToggle = document.getElementById('menu-toggle');
+    const nav = document.getElementById('nav');
+    menuToggle.addEventListener('click', () => {
+      nav.classList.toggle('active');
+    });
+
+    // Smooth scrolling
+    document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if(target){
+          target.scrollIntoView({ behavior: 'smooth' });
+          nav.classList.remove('active'); // close mobile menu
+        }
+      });
+    });
+
+    // Dark/Light mode toggle
+    const darkToggle = document.getElementById('dark-mode-toggle');
+    darkToggle.addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
+    });
+  </script>
+
+</body>
+</html>
